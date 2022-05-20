@@ -3,6 +3,6 @@ In order to read from and write data to Google Sheets in Python, we will have to
 
 #Creating a service account
 1. Go to [Google developer console] (https://console.cloud.google.com/) and click on **Create Project**
-2. 
+2. Search for Google Drive API and click on “Enable”. Do the same for the Google Sheets API. ![Create credential](CS682/Images/Screen Shot 2022-05-20 at 12.32.03 PM.png)
 3. 
 4. 
