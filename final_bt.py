@@ -5,10 +5,7 @@ import json
 import pandas as pd
 from bluepy.btle import Scanner, DefaultDelegate
 from upload import Sheets
-'''
-    Class defination
 
-'''
 
 
 class Resturant(DefaultDelegate):
@@ -34,7 +31,7 @@ class BluetoothProject:
             columns=['addr', 'first_detect_time', 'minute_spent'])
         self.memory = {}
         self.Sheets = Sheets()
-        self.worksheet = self.Sheets.open_sheet_by_name("Blueetooth")
+        self.worksheet = self.Sheets.open_sheet_by_name("crowdbt")
 
     def start_scan(self):
         self.devices = self.scanner.scan(self.loop_time)

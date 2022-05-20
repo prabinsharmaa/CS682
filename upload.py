@@ -15,7 +15,7 @@ class Sheets:
         self.client = gspread.authorize(creds)
         
     def open_sheet_by_name(self, sheet_name):
-        self.spreadsheet = self.client.open("Bluetooth")
+        self.spreadsheet = self.client.open(sheet_name)
         self.worksheet = self.spreadsheet.get_worksheet(0)
         
         return self.worksheet
