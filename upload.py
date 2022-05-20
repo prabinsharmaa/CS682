@@ -4,14 +4,14 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 class Sheets:
     
-    def __init__(self):
+    def __init__(self, cred_path):
+        self.cred_path = cred_path 
         self.creds()
     
     def creds(self):
         scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
             "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-        creds = ServiceAccountCredentials.from_json_keyfile_name(
-        "utils/credentials.json", scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name(self.cred_path, scope)
         self.client = gspread.authorize(creds)
         
     def open_sheet_by_name(self, sheet_name):

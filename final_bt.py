@@ -9,6 +9,7 @@ from upload import Sheets
 
 
 class Resturant(DefaultDelegate):
+    
     def __init__(self):
         DefaultDelegate.__init__(self)
         self.number = 0
@@ -30,7 +31,8 @@ class BluetoothProject:
         self.df = pd.DataFrame(
             columns=['addr', 'first_detect_time', 'minute_spent'])
         self.memory = {}
-        self.Sheets = Sheets()
+        self.cred_path = "utils/credentials.json"
+        self.Sheets = Sheets(self.cred_path)
         self.worksheet = self.Sheets.open_sheet_by_name("crowdbt")
 
     def start_scan(self):
@@ -104,8 +106,13 @@ class BluetoothProject:
         # final_output['Detected_devices'] = ['a','b','c']
         # a = '['+ ' '.join(final_output['Detected_devices']) + ']'
         # print(a)
-         
-        to_append =  [final_output['Current Time'], Total_Headcount, max(final_output['dwell time (minutes)'])]
+        if Total_Headcount != 0:
+            dwell_time = max(final_output['dwell time (minutes)'])
+                             
+        else:
+            dwell_time = 0
+        
+        to_append =  [final_output['Current Time'], Total_Headcount, dwell_time]
         print(to_append)
         self.worksheet.append_rows([to_append])
         
